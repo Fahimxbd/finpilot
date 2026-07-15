@@ -11,6 +11,32 @@
 >
 > Trading output is informational only and is never a buy/sell recommendation. FinPilot has no brokerage write access and cannot execute trades, transfers, tax filings, or accounting postings.
 
+## Web interface (free public demo)
+
+FinPilot includes a Streamlit interface in `streamlit_app.py` for calculators, read-only
+market research, portfolio review, CSV accounting workflows, and text-based PDF summaries.
+
+[![Deploy on Streamlit Community Cloud](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/)
+
+Deploy settings:
+
+- Repository: `Fahimxbd/finpilot`
+- Branch: `main`
+- Main file path: `streamlit_app.py`
+
+The public interface is deliberately **fail-closed for cost safety**:
+
+- no paid AI provider or cloud-LLM API key;
+- local/rule-based processing only;
+- no field where a visitor can submit an API key;
+- no brokerage, payment, transfer, filing, or ledger-write capability;
+- 8 MB upload limit, 5,000-row CSV limit, 25-page PDF limit;
+- 10 live market-data requests per browser session.
+
+Streamlit Community Cloud is currently a free hosting option for community apps. Do not
+enter a payment card or upgrade to a paid product for this project. Hosting providers can
+change their terms in the future, so review any new billing notice before accepting it.
+
 ## What it does
 
 ### Trading insights
@@ -101,6 +127,9 @@ finpilot/
 ├── .env.example
 ├── requirements.txt
 ├── pyproject.toml
+├── streamlit_app.py
+├── .streamlit/
+│   └── config.toml
 ├── config/
 │   └── limits.yaml
 ├── src/
