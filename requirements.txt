@@ -6,3 +6,4 @@ yfinance>=0.2.40,<1.0
 feedparser>=6.0,<7.0
 pypdf>=5.0,<7.0
 requests>=2.31,<3.0
+streamlit>=1.40,<2.0
