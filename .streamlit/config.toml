@@ -1,0 +1,11 @@
+[server]
+headless = true
+maxUploadSize = 8
+maxMessageSize = 50
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+base = "dark"
+primaryColor = "#38BDF8"
