@@ -1,0 +1,4 @@
+invoice_id,vendor,amount,due_date
+INV-1001,Northwind Supplies,250.00,2026-01-31
+INV-1002,Contoso Hosting,89.99,2026-02-05
+INV-1003,Example Legal,500.00,2026-02-10

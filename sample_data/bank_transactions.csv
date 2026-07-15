@@ -1,0 +1,8 @@
+date,description,debit,credit,balance
+2026-01-02,Client payment invoice 1042,0,2500,2500
+2026-01-03,Office rent January,900,0,1600
+2026-01-04,GitHub subscription,10,0,1590
+2026-01-05,Unknown merchant ZXQ,75,0,1515
+2026-01-05,Unknown merchant ZXQ,75,0,1440
+2026-01-07,Electricity bill,120,0,1320
+2026-01-09,Professional accounting consultation,200,0,1120

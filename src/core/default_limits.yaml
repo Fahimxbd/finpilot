@@ -1,0 +1,14 @@
+max_monthly_api_calls: 500
+max_tokens_per_run: 8000
+near_limit_ratio: 0.80
+min_seconds_between_calls: 1.0
+queue_on_throttle: true
+usage_file: .finpilot/usage.json
+audit_file: .finpilot/ai_audit.jsonl
+services:
+  market_data:
+    monthly_calls: 200
+  rss_news:
+    monthly_calls: 200
+  local_llm:
+    monthly_calls: 300
