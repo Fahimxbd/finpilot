@@ -4,6 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/)
+[![Live demo](https://img.shields.io/badge/Live%20Demo-Open%20FinPilot-1DBF95?logo=cloudflare&logoColor=white)](https://finpilot.fahimprivateuser-d8a.workers.dev/)
 
 ## Mandatory disclaimer
 
@@ -15,9 +16,13 @@
 
 FinPilot has a **browser-based Cloudflare Workers edition** in `public/`. It has a responsive dashboard and needs **no paid APIs, API keys, Python server, or database**. The original Python/Streamlit app below remains available for local or separate Streamlit hosting.
 
-**Production Worker:** `f` (the existing Cloudflare project shown in Deployments).
+**Production Worker:** `finpilot`.
 
-**Public live URL:** Deployment/URL verification pending. The URL will be recorded here only after it is confirmed to serve the current FinPilot site. Open [Cloudflare Workers Dashboard](https://dash.cloudflare.com/) → **Workers & Pages** → **f** → **Deployments** → **Visit** to find the production URL.
+**Public live website:** [Launch FinPilot](https://finpilot.fahimprivateuser-d8a.workers.dev/)
+
+**Direct Trading Insights page:** [Open Trading Insights](https://finpilot.fahimprivateuser-d8a.workers.dev/#trading)
+
+Visitors can use the hosted website immediately in a mobile or desktop browser; no installation or sign-in is needed.
 
 ### Publish or redeploy
 
@@ -33,13 +38,87 @@ For the Cloudflare GitHub integration, use:
 - Repository: `Fahimxbd/finpilot`, branch: `main`, root directory `/`.
 - Build command: leave blank (there is no frontend compilation step).
 - Deploy command: `npx wrangler deploy`.
-- Wrangler file: `wrangler.toml` (Worker name `f`, assets `./public`).
+- Wrangler file: `wrangler.toml` (Worker name `finpilot`, assets `./public`).
 
 **What works in-browser:** SIP, goal and compound-growth calculators; read-only holdings analysis; transaction categorization; invoice candidate matching; statement comparisons; historical OHLCV CSV technical indicators; pasted research text summarization. Files are parsed on-device, and no file content is sent to FinPilot servers.
 
 **Differences from the Python version:** Live Yahoo Finance/yfinance and RSS retrieval, Python's PDF extraction, and local Ollama are **not available in the static Cloudflare edition**. Trading insights use a user-provided historical CSV; research summary uses pasted text. Use `streamlit_app.py` or the CLI for those Python-only features.
 
 This demo is educational, not financial, tax or investment advice. It does not trade, transfer, file taxes or write to ledgers.
+
+## Installation — computer terminal and Android Termux
+
+**If you only want the web app**, no installation is required: [open FinPilot](https://finpilot.fahimprivateuser-d8a.workers.dev/). The browser version runs on Cloudflare and performs its calculations locally on your device.
+
+### Linux / macOS terminal (full Python CLI + Streamlit)
+
+Install Git and Python 3.11 or newer first. From a terminal:
+
+```bash
+git clone https://github.com/Fahimxbd/finpilot.git
+cd finpilot
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e .
+finpilot --help
+streamlit run streamlit_app.py
+```
+
+The Streamlit command starts a local web server and shows its browser URL (normally `http://localhost:8501`). To try the command-line interface instead, run, for example:
+
+```bash
+finpilot sip --monthly 500 --annual-rate 8 --years 10 --initial 1000
+finpilot portfolio sample_data/holdings.csv
+```
+
+To update an existing clone later: `git pull` from the `finpilot` directory, then repeat the Python install step if dependencies changed.
+
+### Windows PowerShell (full Python CLI + Streamlit)
+
+Install [Git](https://git-scm.com/) and Python 3.11+ first; then run:
+
+```powershell
+git clone https://github.com/Fahimxbd/finpilot.git
+cd finpilot
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -e .
+finpilot --help
+streamlit run streamlit_app.py
+```
+
+If PowerShell prevents virtual-environment activation, run `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` in **that terminal session** and try activation again.
+
+### Android Termux (browser-based Cloudflare edition, served locally)
+
+Use the official, up-to-date Termux installation. These commands clone the project and serve its static frontend on your Android phone. They do not install the full Python/Streamlit backend:
+
+```bash
+pkg update -y && pkg upgrade -y
+pkg install -y git python
+git clone https://github.com/Fahimxbd/finpilot.git
+cd finpilot
+python -m http.server 8000 --bind 127.0.0.1 --directory public
+```
+
+Open a **second Termux session** (leave the server running in the first) and open the website:
+
+```bash
+termux-open-url http://127.0.0.1:8000/
+```
+
+Or open `http://127.0.0.1:8000/` directly in Chrome/Firefox. To stop the local server, return to its terminal and press `Ctrl+C`.
+
+To update the local Termux copy:
+
+```bash
+cd ~/finpilot
+git pull
+```
+
+**Android compatibility:** Native Python packages such as `numpy`, `pandas`, `pyarrow`, and Streamlit may require special builds or may fail under Termux. For a reliable Android experience, use the live Cloudflare URL or the local static server above. The browser-based edition supports the calculators and local CSV analysis but **does not** include Python-only live Yahoo data, RSS retrieval, Ollama, or PDF extraction.
 
 ## Web interface (free public demo)
 
