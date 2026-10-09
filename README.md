@@ -11,6 +11,36 @@
 >
 > Trading output is informational only and is never a buy/sell recommendation. FinPilot has no brokerage write access and cannot execute trades, transfers, tax filings, or accounting postings.
 
+## Cloudflare Workers demo (mobile, tablet and desktop)
+
+FinPilot has a **browser-based Cloudflare Workers edition** in `public/`. It has a responsive dashboard and needs **no paid APIs, API keys, Python server, or database**. The original Python/Streamlit app below remains available for local or separate Streamlit hosting.
+
+**Production Worker:** `f` (the existing Cloudflare project shown in Deployments).
+
+**Public live URL:** Deployment/URL verification pending. The URL will be recorded here only after it is confirmed to serve the current FinPilot site. Open [Cloudflare Workers Dashboard](https://dash.cloudflare.com/) → **Workers & Pages** → **f** → **Deployments** → **Visit** to find the production URL.
+
+### Publish or redeploy
+
+The repository's `wrangler.toml` points to `./public`, so Wrangler can deploy static assets:
+
+```bash
+npm install --no-audit --no-fund
+npx wrangler deploy
+```
+
+For the Cloudflare GitHub integration, use:
+
+- Repository: `Fahimxbd/finpilot`, branch: `main`, root directory `/`.
+- Build command: leave blank (there is no frontend compilation step).
+- Deploy command: `npx wrangler deploy`.
+- Wrangler file: `wrangler.toml` (Worker name `f`, assets `./public`).
+
+**What works in-browser:** SIP, goal and compound-growth calculators; read-only holdings analysis; transaction categorization; invoice candidate matching; statement comparisons; historical OHLCV CSV technical indicators; pasted research text summarization. Files are parsed on-device, and no file content is sent to FinPilot servers.
+
+**Differences from the Python version:** Live Yahoo Finance/yfinance and RSS retrieval, Python's PDF extraction, and local Ollama are **not available in the static Cloudflare edition**. Trading insights use a user-provided historical CSV; research summary uses pasted text. Use `streamlit_app.py` or the CLI for those Python-only features.
+
+This demo is educational, not financial, tax or investment advice. It does not trade, transfer, file taxes or write to ledgers.
+
 ## Web interface (free public demo)
 
 FinPilot includes a Streamlit interface in `streamlit_app.py` for calculators, read-only
