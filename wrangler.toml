@@ -1,0 +1,8 @@
+# Cloudflare Workers: deploy the browser-only FinPilot frontend as static assets.
+# The original Streamlit application remains available for running with Python.
+# Keep this name aligned with the existing Cloudflare project shown in Deployments.
+name = "f"
+compatibility_date = "2026-10-01"
+
+[assets]
+directory = "./public"
