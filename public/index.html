@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b1221">
+  <meta name="description" content="FinPilot is an open-source educational finance toolkit with investment calculators, CSV portfolio reviews and accounting tools. Free, private and read-only.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="FinPilot — Financial clarity, without complexity">
+  <meta property="og:description" content="Free educational investing and accounting tools. Analyze locally in your browser.">
+  <meta property="og:image" content="/social-preview.svg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+  <title>FinPilot — Free Financial Research & Accounting Tools</title>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="/" aria-label="FinPilot home"><span class="brand-icon">F<span class="brand-dot">.</span></span><span><strong>FinPilot</strong><small>FINANCIAL TOOLKIT</small></span></a>
+      <div class="nav-caption">WORKSPACE</div>
+      <nav class="navigation" id="navigation" aria-label="Main navigation">
+        <button class="nav-link active" data-page="overview"><span class="nav-symbol">◫</span>Overview</button>
+        <button class="nav-link" data-page="sip"><span class="nav-symbol">↗</span>SIP calculator</button>
+        <button class="nav-link" data-page="goal"><span class="nav-symbol">◎</span>Goal planner</button>
+        <button class="nav-link" data-page="compound"><span class="nav-symbol">◈</span>Compound growth</button>
+        <button class="nav-link" data-page="trading"><span class="nav-symbol">⌁</span>Trading insights</button>
+        <button class="nav-link" data-page="portfolio"><span class="nav-symbol">▦</span>Portfolio review</button>
+        <button class="nav-link" data-page="categorizer"><span class="nav-symbol">≡</span>Transactions</button>
+        <button class="nav-link" data-page="invoices"><span class="nav-symbol">⇄</span>Invoice matching</button>
+        <button class="nav-link" data-page="statements"><span class="nav-symbol">▤</span>Statements</button>
+        <button class="nav-link" data-page="research"><span class="nav-symbol">▧</span>Research summary</button>
+      </nav>
+      <div class="side-bottom">
+        <div class="safe-box"><div class="safe-head"><span class="live-dot"></span> Zero paid APIs</div><p>Files remain in your browser. No brokerage transactions, payments or uploads.</p></div>
+        <a class="github-link" href="https://github.com/Fahimxbd/finpilot" target="_blank" rel="noopener noreferrer">View source on GitHub <span>↗</span></a>
+      </div>
+    </aside>
+    <div class="scrim" id="scrim" hidden></div>
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar-left"><button id="menu" class="icon-button menu-button" aria-label="Open menu" aria-expanded="false">☰</button><span class="crumb">Workspace</span><span class="slash">/</span><strong id="breadcrumb">Overview</strong></div>
+        <div class="topbar-right"><span class="status-label"><span class="live-dot"></span>All tools local</span><a href="https://github.com/Fahimxbd/finpilot" target="_blank" rel="noopener noreferrer" class="top-link">GitHub ↗</a></div>
+      </header>
+      <main id="view" class="content" tabindex="-1"></main>
+      <footer class="footer"><span>© FinPilot · Open source under MIT</span><span>Educational estimates only · Not financial, legal or tax advice</span></footer>
+    </div>
+  </div>
+  <div role="status" aria-live="polite" class="toast" id="toast"></div>
+</body>
+</html>
